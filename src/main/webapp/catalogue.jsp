@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,19 +34,21 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						    <tr>
-						      <th scope="row">1</th>
-						      <td>Otto</td>
-						      <td>@mdo</td>
-						      <td>Mark</td>
-						      <td>Mark</td>
-						      <td><img src="photos/test.png" alt="Erreurs" height="50" width="50"></td>
-						      <td>
-						      	<form action="ajouterPanier.sebo" method="post">
-						      		<button class="btn btn-primary">Ajouter au panier</button>
-						      	</form> 
-						      </td>
-						    </tr>
+						  	<c:forEach items="${model.articles}" var="article">
+							    <tr>
+							      <th scope="row">${article.id }</th>
+							      <td>${article.designation }</td>
+							      <td>${article.prix }</td>
+							      <td><img src="${pageContext.request.contextPath}/${article.photo }" alt="Erreur" height="50" width="50"></td>
+							      <td>${article.stock }</td>
+							      <td>${article.id_cat }</td>
+							      <td>
+							      	<form action="ajouterPanier.sebo" method="post">
+							      		<button class="btn btn-primary">Ajouter au panier</button>
+							      	</form> 
+							      </td>
+							    </tr>
+							 </c:forEach>
 						  </tbody>
 						</table>
 				</div>

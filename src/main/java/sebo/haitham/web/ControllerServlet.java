@@ -13,17 +13,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sebo.haitham.dao.ArticleDaoImp;
 import sebo.haitham.dao.ClientDaoImp;
 import sebo.haitham.dao.DbConnection;
+import sebo.haitham.dao.IArticleDao;
 import sebo.haitham.dao.IClientDao;
 import sebo.haitham.metier.Client;
 
 public class ControllerServlet extends HttpServlet{
 	private IClientDao metier; 
+	private IArticleDao article_metier; 
 	private Map<String,String> erreurs;
 	@Override
 	public void init() throws ServletException {
 		metier=new ClientDaoImp();
+		article_metier=new ArticleDaoImp();
 		erreurs = new HashMap<String, String>();
 		erreurs.put("nom","");
 		erreurs.put("prenom","");
@@ -103,6 +107,9 @@ public class ControllerServlet extends HttpServlet{
 				break;
 			}
 			case "/catalogue.sebo": {
+				ArticleModel model=new ArticleModel();
+				model.setArticles(article_metier.getArticles());
+				req.setAttribute("model", model);
 				req.getRequestDispatcher("catalogue.jsp").forward(req, res);
 				break;
 			}
