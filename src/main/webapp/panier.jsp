@@ -39,7 +39,7 @@
 							   </div>
 							    
 							   </div>
-							   <form action="commander.sebo?CodeArticle=${article.id }" method="post"> 
+							   <form action="commander?CodeArticle=${article.id }" method="post"> 
 								   <div class="form-row">
 									   <div class="form-group col-md-6">
 											<label for="quantite" class="font-weight-bold">Quantite</label>
