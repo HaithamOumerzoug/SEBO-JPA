@@ -73,17 +73,22 @@ public class CatalogueServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String cat_name=req.getParameter("categorie");
-		Long cat_id=article_metier.getCatId(cat_name);
-		
 		ArticleModel model=new ArticleModel();
 		CategorieModel cat_model = new CategorieModel();
 		
-		model.setArticles(article_metier.getArticles(cat_id));
+		if(cat_name.equals("all")) {
+			model.setArticles(article_metier.getArticles(null));
+		}else {
+			Long cat_id=article_metier.getCatId(cat_name);
+			model.setArticles(article_metier.getArticles(cat_id));
+		}
+		for (Article article : model.getArticles()) {
+			article.setCat(article_metier.getCat(article.getId()));
+		}
 		cat_model.setCategories(article_metier.getCategories());
 		
 		req.setAttribute("model", model);
 		req.setAttribute("cat_model", cat_model);
-		req.setAttribute("old_value", cat_name);
 		req.getRequestDispatcher("catalogue.jsp").forward(req, res);
 	}
 

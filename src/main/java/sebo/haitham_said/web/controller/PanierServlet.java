@@ -42,7 +42,6 @@ public class PanierServlet extends HttpServlet {
 			while(keys.hasMoreElements()) {
 				String key = (String)keys.nextElement();
 				if(!key.equals("client_id") && !key.equals("client_name")) {
-					System.out.println(key);
 					Article article =(Article)session.getAttribute(key);
 					articles.add(article);
 				}

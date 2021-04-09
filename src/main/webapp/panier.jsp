@@ -18,7 +18,7 @@
 			  </div>
 			  <div class="card-body">
 			  	<c:choose>
-					  	<c:when test="${fn:length(articles) }!=0">
+					  	<c:when test="${fn:length(articles) !=0}">
 						  	<c:forEach items="${articles }" var="article">
 						  		<div class="form-group">
 							    	<label for="" class="font-weight-bold">Designation</label>
@@ -39,7 +39,7 @@
 							   </div>
 							    
 							   </div>
-							   <form action="commander.sebo?CodeArticle=${article.id }" method="post"> 
+							   <form action="commander?CodeArticle=${article.id }" method="post"> 
 								   <div class="form-row">
 									   <div class="form-group col-md-6">
 											<label for="quantite" class="font-weight-bold">Quantite</label>
