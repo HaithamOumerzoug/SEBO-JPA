@@ -10,4 +10,5 @@ public interface IArticleDao {
 	public Article getArticle(Long CodeArticle);
 	public List<Categorie> getCategories();
 	public Long getCatId(String cat);
+	public String getCat(Long id);
 }

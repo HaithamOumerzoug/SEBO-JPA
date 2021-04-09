@@ -1,10 +1,3 @@
-<%@page import="java.util.Map"%>
-<%@page import="java.util.HashMap"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<% Map<String,String> erreurs =(HashMap<String,String>)request.getAttribute("erreurs"); 
-	String email = (String)request.getAttribute("email");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +16,15 @@
 			    <form action="identifier" method="post">
 				  <div class="form-group">
 				  	<label for="nom">E-mail</label>
-				    <input type="text" class="form-control" name="email" value="<%=email==null?"":email %>">
-				    <div class="text-danger"><i><%=erreurs.get("email").equals("")?"":erreurs.get("email") %></i></div>
+				    <input type="text" class="form-control" name="email" value="${email }">
+				    <div class="text-danger"><i>${erreurs['email'] }</i></div>
 				  </div>
 				  <div class="form-group">
 				    <label for="motdepass">Mot de passe</label>
 				    <input type="password" class="form-control" name="motdepasse">
-				    <div class="text-danger"><i><%=erreurs.get("motdepasse").equals("")?"":erreurs.get("motdepasse") %></i></div>
+				    <div class="text-danger"><i>${erreurs['motdepasse'] }</i></div>
 				  </div>
-				  <div class="text-danger"><i><%=erreurs.get("general").equals("")?"":erreurs.get("general") %></i></div>
+				  <div class="text-danger"><i>${erreurs['general'] }</i></div>
 				  
 				  <button type="submit" class="btn btn-info btn-block">Ok</button>
 				</form>

@@ -28,7 +28,7 @@
 				  <div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="" class="font-weight-bold">Categorie</label>
-						<div class="text-danger">${article.id_cat }</div>
+						<div class="text-danger">${article.cat }</div>
 				    </div>
 				    <div class="form-group col-md-6">
 						<label for="" class="font-weight-bold">Stock</label>

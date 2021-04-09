@@ -44,7 +44,7 @@
 							      <td>${article.prix }</td>
 							      <td><img src="${pageContext.request.contextPath}${article.photo }" alt="Erreur" height="50" width="50"></td>
 							      <td>${article.stock }</td>
-							      <td>${article.id_cat }</td>
+							      <td>${article.cat }</td>
 							      <td>
 							      	<form action="ajouterPanier?CodeArticle=${article.id }" method="post">
 							      		<button class="btn btn-light">

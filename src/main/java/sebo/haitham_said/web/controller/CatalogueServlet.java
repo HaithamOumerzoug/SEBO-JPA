@@ -40,6 +40,9 @@ public class CatalogueServlet extends HttpServlet {
 				ArticleModel model=new ArticleModel();
 				CategorieModel cat_model = new CategorieModel();
 				model.setArticles(article_metier.getArticles(null));
+				for (Article article : model.getArticles()) {
+					article.setCat(article_metier.getCat(article.getId()));
+				}
 				cat_model.setCategories(article_metier.getCategories());
 				req.setAttribute("model", model);
 				req.setAttribute("cat_model", cat_model);
@@ -52,6 +55,7 @@ public class CatalogueServlet extends HttpServlet {
 			else {
 				Long CodeArticle = Long.parseLong(req.getParameter("CodeArticle"));
 				Article article =article_metier.getArticle(CodeArticle);
+				article.setCat(article_metier.getCat(article.getId_cat()));
 				req.setAttribute("article", article);
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
 			}

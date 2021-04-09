@@ -7,6 +7,7 @@ public class Article {
 	private int stock;
 	private Long id_cat;
 	private String photo;
+	private String cat;
 	public Article() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -53,6 +54,12 @@ public class Article {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public String getCat() {
+		return cat;
+	}
+	public void setCat(String cat) {
+		this.cat = cat;
 	}
 	
 	

@@ -103,9 +103,25 @@ public class ArticleDaoImp implements IArticleDao{
 			}
 			ps.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return article;
+	}
+
+	@Override
+	public String getCat(Long id) {
+		String cat_name="";
+		try {
+			String query = "SELECT categories.Cat FROM categories INNER JOIN articles on articles.Categorie=categories.RefCat WHERE articles.Categorie = ?";
+			PreparedStatement pstm = con.prepareStatement(query);
+			pstm.setLong(1, id);
+			ResultSet res = pstm.executeQuery();
+			while(res.next()) {
+				cat_name= res.getString("Cat");
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cat_name;
 	}
 }
