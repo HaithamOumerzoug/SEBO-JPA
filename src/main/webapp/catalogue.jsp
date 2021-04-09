@@ -47,7 +47,9 @@
 							      <td>${article.id_cat }</td>
 							      <td>
 							      	<form action="ajouterPanier.sebo" method="post">
-							      		<button class="btn btn-primary">Ajouter au panier</button>
+							      		<button class="btn btn-light">
+											<img alt="..." src="${pageContext.request.contextPath}/icons/panier.png" height="30" width="30">
+										</button>
 							      	</form> 
 							      </td>
 							    </tr>

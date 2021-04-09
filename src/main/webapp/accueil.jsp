@@ -18,7 +18,7 @@
 				<div class="card-body d-flex justify-content-between">
 					<a class="btn btn-success" href="catalogue.sebo">Consulter le catalogue</a>
 					<a class="btn btn-primary" href="#">Suivre vos commandes</a>
-					<a class="btn btn-warning" href="#">Visualiser votre panier</a>
+					<a class="btn btn-warning" href="panier.sebo">Visualiser votre panier</a>
 				</div>
 			</div>
 		</div>

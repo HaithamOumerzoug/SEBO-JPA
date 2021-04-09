@@ -27,7 +27,7 @@
 				  </div>
 				  <div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="nom" class="font-weight-bold">Categorie</label>
+						<label for="" class="font-weight-bold">Categorie</label>
 						<div class="text-danger">${article.id_cat }</div>
 				    </div>
 				    <div class="form-group col-md-6">
@@ -35,14 +35,18 @@
 						<div class="text-danger">${article.stock }</div>
 				    </div>
 				   </div>
-				  <div class="form-group">
+				   <div class="form-group">
 				    <label for="" class="font-weight-bold">Photo</label>
 				    <div class=""><img alt="..." height="80" width="80" src="${pageContext.request.contextPath}/${article.photo }"></div>
-				  </div>
+				   </div>
 			  </div>
 			  <div class="card-footer d-flex">
 			    <a href="catalogue.sebo" class="btn btn-danger mr-4">Retour</a>
-			    <a href="ajouterPanier.sebo" class="btn btn-primary">Ajouter au panier</a>
+			    <form action="ajouterPanier.sebo?CodeArticle=${article.id }" method="post">
+					<button class="btn btn-light">
+						<img alt="..." src="${pageContext.request.contextPath}/icons/panier.png" height="30" width="30">
+					</button>
+				</form> 
 			  </div>
 			</div>
 		</div>

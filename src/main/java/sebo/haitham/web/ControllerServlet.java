@@ -125,6 +125,14 @@ public class ControllerServlet extends HttpServlet{
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
 				break;
 			}
+			case "/panier.sebo": {
+				HttpSession session = req.getSession();
+				if(session.getAttribute("client_id")==null) res.sendRedirect("index.sebo");
+				Article article = (Article)session.getAttribute("article");
+				req.setAttribute("article", article);
+				req.getRequestDispatcher("panier.jsp").forward(req, res);
+				break;
+			}
 			default:
 				req.getRequestDispatcher("NotFound.jsp").forward(req, res);
 			}
@@ -229,7 +237,7 @@ public class ControllerServlet extends HttpServlet{
 				}
 			}
 			
-		}else if(path.equals("/catalogue.sebo")) {
+		} else if(path.equals("/catalogue.sebo")) {
 			String cat_name=req.getParameter("categorie");
 			Long cat_id=article_metier.getCatId(cat_name);
 			
@@ -243,6 +251,16 @@ public class ControllerServlet extends HttpServlet{
 			req.setAttribute("cat_model", cat_model);
 			req.setAttribute("old_value", cat_name);
 			req.getRequestDispatcher("catalogue.jsp").forward(req, res);
+		}else if(path.equals("/ajouterPanier.sebo")) {
+			Long CodeArticle = Long.parseLong(req.getParameter("CodeArticle"));
+			HttpSession session = req.getSession();
+			if(session.getAttribute("client_id")==null) res.sendRedirect("index.sebo");
+			else {
+				Article article =article_metier.getArticle(CodeArticle);
+				session.setAttribute("article", article);
+				res.sendRedirect(req.getContextPath()+"/detail.sebo?CodeArticle="+CodeArticle);
+			}
+			
 		}
 	}	
 }
