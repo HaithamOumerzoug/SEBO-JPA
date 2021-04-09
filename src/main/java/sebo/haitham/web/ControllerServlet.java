@@ -18,6 +18,7 @@ import sebo.haitham.dao.ClientDaoImp;
 import sebo.haitham.dao.DbConnection;
 import sebo.haitham.dao.IArticleDao;
 import sebo.haitham.dao.IClientDao;
+import sebo.haitham.metier.Article;
 import sebo.haitham.metier.Client;
 
 public class ControllerServlet extends HttpServlet{
@@ -108,9 +109,20 @@ public class ControllerServlet extends HttpServlet{
 			}
 			case "/catalogue.sebo": {
 				ArticleModel model=new ArticleModel();
-				model.setArticles(article_metier.getArticles());
+				CategorieModel cat_model = new CategorieModel();
+				model.setArticles(article_metier.getArticles(null));
+				cat_model.setCategories(article_metier.getCategories());
 				req.setAttribute("model", model);
+				req.setAttribute("cat_model", cat_model);
 				req.getRequestDispatcher("catalogue.jsp").forward(req, res);
+				break;
+			}
+			case "/detail.sebo": {
+				Long CodeArticle = Long.parseLong(req.getParameter("CodeArticle"));
+				System.out.println(CodeArticle);
+				Article article =article_metier.getArticle(CodeArticle);
+				req.setAttribute("article", article);
+				req.getRequestDispatcher("detail.jsp").forward(req, res);
 				break;
 			}
 			default:
@@ -217,6 +229,20 @@ public class ControllerServlet extends HttpServlet{
 				}
 			}
 			
+		}else if(path.equals("/catalogue.sebo")) {
+			String cat_name=req.getParameter("categorie");
+			Long cat_id=article_metier.getCatId(cat_name);
+			
+			ArticleModel model=new ArticleModel();
+			CategorieModel cat_model = new CategorieModel();
+			
+			model.setArticles(article_metier.getArticles(cat_id));
+			cat_model.setCategories(article_metier.getCategories());
+			
+			req.setAttribute("model", model);
+			req.setAttribute("cat_model", cat_model);
+			req.setAttribute("old_value", cat_name);
+			req.getRequestDispatcher("catalogue.jsp").forward(req, res);
 		}
 	}	
 }

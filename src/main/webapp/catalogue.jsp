@@ -15,19 +15,22 @@
 			    	Catalogue
 			  	</div>
 				<div class="card-body">
-					<select class="form-control col-md-4 mb-5">
-					  <option selected>Choisissez le genre</option>
-					  <option value="1">One</option>
-					  <option value="2">Two</option>
-					  <option value="3">Three</option>
-					</select>  
+					<form action="catalogue.sebo" method="post" class="mb-5 d-flex ">
+						<select class="form-control col-md-4 mr-3" name="categorie">
+						  <option selected value="cat_name"></option>
+						  <c:forEach items="${cat_model.categories}" var="categorie">
+						  	<option value="${categorie.cat }">${categorie.cat }</option>
+						  </c:forEach>
+						</select>
+						<button type="submit" class="btn btn-primary btn-sm">Choisissez le genre</button> 
+					</form> 
 					  <table class="table">
 						  <thead>
 						    <tr>
 						      <th scope="col">Réference</th>
 						      <th scope="col">Designation</th>
 						      <th scope="col">Prix</th>
-						      <th scope="col">photo</th>
+						      <th scope="col">Photo</th>
 						      <th scope="col">Stock</th>
 					      	  <th scope="col">Categorie</th>
 					      	  <th></th>
@@ -36,7 +39,7 @@
 						  <tbody>
 						  	<c:forEach items="${model.articles}" var="article">
 							    <tr>
-							      <th scope="row">${article.id }</th>
+							      <th scope="row"><a href="${pageContext.request.contextPath}/detail.sebo?CodeArticle=${article.id }" class="text-decoration-none">${article.id }</a></th>
 							      <td>${article.designation }</td>
 							      <td>${article.prix }</td>
 							      <td><img src="${pageContext.request.contextPath}/${article.photo }" alt="Erreur" height="50" width="50"></td>
