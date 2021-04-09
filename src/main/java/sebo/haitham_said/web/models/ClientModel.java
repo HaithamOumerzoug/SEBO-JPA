@@ -1,4 +1,4 @@
-package sebo.haitham_said.web;
+package sebo.haitham_said.web.models;
 
 import java.util.ArrayList;
 import java.util.List;

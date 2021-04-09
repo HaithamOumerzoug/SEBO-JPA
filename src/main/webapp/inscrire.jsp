@@ -1,9 +1,8 @@
-<%@page import="sebo.haitham_said.metier.Client"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <% Map<String,String> erreurs =(HashMap<String,String>)request.getAttribute("erreurs"); 
 %>
-<% Client client =(Client)request.getAttribute("client"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +21,7 @@
 			    <form action="inscrire.sebo" method="post">
 				  <div class="form-group">
 				    <label for="nom">Nom</label>
-				    <input type="text" class="form-control" name="nom"  aria-describedby="nom" value="<%=client.getNom()==null?"":client.getNom() %>">
+				    <input type="text" class="form-control" name="nom"  aria-describedby="nom" value="<">
 				    <div class="text-danger"><i><%=erreurs.get("nom").equals("")?"":erreurs.get("nom") %></i></div>
 				  </div>
 				  <div class="form-group">

@@ -1,5 +1,3 @@
-
-<% String name=(String)request.getAttribute("client_name"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +11,12 @@
 		<div class="col-md-8 offset-2">
 			<div class="card my-5">
 			  	<div class="card-header text-primary text-center" style="font-size:30px">
-			    Bonjour <%=name %>
+			    Bonjour ${name }
 			  	</div>
 				<div class="card-body d-flex justify-content-between">
-					<a class="btn btn-success" href="catalogue.sebo">Consulter le catalogue</a>
+					<a class="btn btn-success" href="catalogue">Consulter le catalogue</a>
 					<a class="btn btn-primary" href="#">Suivre vos commandes</a>
-					<a class="btn btn-warning" href="panier.sebo">Visualiser votre panier</a>
+					<a class="btn btn-warning" href="panier">Visualiser votre panier</a>
 				</div>
 			</div>
 		</div>

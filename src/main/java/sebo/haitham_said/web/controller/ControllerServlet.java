@@ -1,4 +1,4 @@
-package sebo.haitham_said.web;
+package sebo.haitham_said.web.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +20,8 @@ import sebo.haitham_said.dao.IArticleDao;
 import sebo.haitham_said.dao.IClientDao;
 import sebo.haitham_said.metier.Article;
 import sebo.haitham_said.metier.Client;
+import sebo.haitham_said.web.models.ArticleModel;
+import sebo.haitham_said.web.models.CategorieModel;
 
 public class ControllerServlet extends HttpServlet{
 	private IClientDao metier; 

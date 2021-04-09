@@ -11,7 +11,7 @@
 	<div class="text-center">
 		<h1 class="p-3 mb-2 text-danger">Page non trouvé</h1>
 		<p class="display-5">La ressource demandée n'est pas disponible.</p>
-		<a href="index.sebo">Page d'accueil</a>
+		<a href="/">Page d'accueil</a>
 	</div>
 </body>
 </html>

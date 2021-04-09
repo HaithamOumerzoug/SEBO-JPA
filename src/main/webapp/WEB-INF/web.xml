@@ -18,6 +18,67 @@
   	<servlet-name>sebo_servlet</servlet-name>
   	<url-pattern>*.sebo</url-pattern>
   </servlet-mapping>
+  <!-- Inscriptions -->
+  <servlet>
+  	<servlet-name>inscription</servlet-name>
+  	<servlet-class>sebo.haitham_said.web.controller.InscriptionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>inscription</servlet-name>
+  	<url-pattern>/inscrire</url-pattern>
+  </servlet-mapping>
+  <!-- Identification -->
+  <servlet>
+  	<servlet-name>identification</servlet-name>
+  	<servlet-class>sebo.haitham_said.web.controller.IdentificationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>identification</servlet-name>
+  	<url-pattern>/identifier</url-pattern>
+  </servlet-mapping>
+  <!-- MainServlet -->
+  <servlet>
+  	<servlet-name>Main</servlet-name>
+  	<servlet-class>sebo.haitham_said.web.controller.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Main</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Main</servlet-name>
+  	<url-pattern>/accueil</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Main</servlet-name>
+  	<url-pattern>/deconnection</url-pattern>
+  </servlet-mapping>
+  <!-- Catalogue -->
+  <servlet>
+  	<servlet-name>Catalogue</servlet-name>
+  	<servlet-class>sebo.haitham_said.web.controller.CatalogueServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Catalogue</servlet-name>
+  	<url-pattern>/catalogue</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Catalogue</servlet-name>
+  	<url-pattern>/detail</url-pattern>
+  </servlet-mapping>
   
+  <!-- Panel -->
+  <servlet>
+  	<servlet-name>Panier</servlet-name>
+  	<servlet-class>sebo.haitham_said.web.controller.PanierServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Panier</servlet-name>
+  	<url-pattern>/panier</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Panier</servlet-name>
+  	<url-pattern>/ajouterPanier</url-pattern>
+  </servlet-mapping>
   
 </web-app>
