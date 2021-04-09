@@ -4,7 +4,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Catalogue</title>
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="Header.jsp" %>
@@ -15,7 +15,7 @@
 			    	Catalogue
 			  	</div>
 				<div class="card-body">
-					<form action="catalogue.sebo" method="post" class="mb-5 d-flex ">
+					<form action="catalogue" method="post" class="mb-5 d-flex ">
 						<select class="form-control col-md-4 mr-3" name="categorie">
 						  <option selected value="cat_name"></option>
 						  <c:forEach items="${cat_model.categories}" var="categorie">
@@ -46,9 +46,9 @@
 							      <td>${article.stock }</td>
 							      <td>${article.id_cat }</td>
 							      <td>
-							      	<form action="ajouterPanier" method="post">
+							      	<form action="ajouterPanier?CodeArticle=${article.id }" method="post">
 							      		<button class="btn btn-light">
-											<img alt="..." src="${pageContext.request.contextPath}/icons/panier.png" height="30" width="30">
+											<img alt="..." src="icons/panier.png" height="30" width="30">
 										</button>
 							      	</form> 
 							      </td>

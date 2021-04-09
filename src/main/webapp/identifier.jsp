@@ -10,7 +10,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Identifier</title>
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -37,7 +37,7 @@
 				</form>
 			  </div>
 			  <div class="card-footer">
-			  	<a class="btn btn-info float-right" href="inscrire.sebo">inscrivez vous</a>
+			  	<a class="btn btn-info float-right" href="inscrire">inscrivez vous</a>
 			  </div>
 			</div>
 		</div>

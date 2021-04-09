@@ -1,6 +1,10 @@
 package sebo.haitham_said.web.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,10 +36,21 @@ public class PanierServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		if(session.getAttribute("client_id")==null) res.sendRedirect(req.getContextPath()+"/");
-		else {Article article = (Article)session.getAttribute("article");
-		req.setAttribute("article", article);
-		req.getRequestDispatcher("panier.jsp").forward(req, res);}
-	}
+		else {
+			List<Article> articles = new ArrayList<Article>();
+			Enumeration keys=session.getAttributeNames();
+			while(keys.hasMoreElements()) {
+				String key = (String)keys.nextElement();
+				if(!key.equals("client_id") && !key.equals("client_name")) {
+					System.out.println(key);
+					Article article =(Article)session.getAttribute(key);
+					articles.add(article);
+				}
+			}
+			
+			req.setAttribute("articles", articles);
+			req.getRequestDispatcher("panier.jsp").forward(req, res);}
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -46,8 +61,9 @@ public class PanierServlet extends HttpServlet {
 		if(session.getAttribute("client_id")==null) res.sendRedirect(req.getContextPath()+"/");
 		else {
 			Article article =article_metier.getArticle(CodeArticle);
-			session.setAttribute("article", article);
-			res.sendRedirect(req.getContextPath()+"/detail?CodeArticle="+CodeArticle);
+			session.setAttribute("article_"+CodeArticle, article);
+			//Redirect to catalogue
+			res.sendRedirect(req.getContextPath()+"/catalogue");
 		}
 	}
 

@@ -87,7 +87,7 @@ public class IdentificationServlet extends HttpServlet {
 				HttpSession session = req.getSession();
 				session.setAttribute("client_name", client.getNom()+" "+client.getPrenom());
 				session.setAttribute("client_id", client.getId());
-				res.sendRedirect("accueil.sebo");
+				res.sendRedirect(req.getContextPath()+"/accueil");
 			}else {
 				erreurs.put("general","E-mail ou mot de passe est invalide!");
 				req.setAttribute("erreurs", erreurs);
