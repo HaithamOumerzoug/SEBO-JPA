@@ -17,8 +17,9 @@
 			    Panier
 			  </div>
 			  <div class="card-body">
+			  <p>${fn:length(articles)}</p>
 			  	<c:choose>
-					  	<c:when test="${fn:length(articles) }!=0">
+					  	<c:when test="${fn:length(articles) !=0}">
 						  	<c:forEach items="${articles }" var="article">
 						  		<div class="form-group">
 							    	<label for="" class="font-weight-bold">Designation</label>
