@@ -101,10 +101,11 @@ public class ControllerServlet extends HttpServlet{
 			}
 			case "/decx.sebo": {
 				HttpSession session = req.getSession();
-				session.invalidate();
+				
+				session.removeAttribute("client_id");
+				session.removeAttribute("client_name");
 				req.getSession(false);
 				res.sendRedirect("index.sebo");
-				
 				break;
 			}
 			case "/catalogue.sebo": {
@@ -119,7 +120,6 @@ public class ControllerServlet extends HttpServlet{
 			}
 			case "/detail.sebo": {
 				Long CodeArticle = Long.parseLong(req.getParameter("CodeArticle"));
-				System.out.println(CodeArticle);
 				Article article =article_metier.getArticle(CodeArticle);
 				req.setAttribute("article", article);
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
@@ -251,6 +251,7 @@ public class ControllerServlet extends HttpServlet{
 			req.setAttribute("cat_model", cat_model);
 			req.setAttribute("old_value", cat_name);
 			req.getRequestDispatcher("catalogue.jsp").forward(req, res);
+			
 		}else if(path.equals("/ajouterPanier.sebo")) {
 			Long CodeArticle = Long.parseLong(req.getParameter("CodeArticle"));
 			HttpSession session = req.getSession();

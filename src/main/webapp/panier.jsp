@@ -26,7 +26,7 @@
 				  	<label for="" class="font-weight-bold">Prix</label>
 				    <div class="text-success">${article.prix } MAD</div>
 				  </div>
-				  <div class="form-group col-md-6">
+				  <div class="form-group">
 						<label for="" class="font-weight-bold">Stock</label>
 						<div class="text-danger">${article.stock }</div>
 				    </div>
