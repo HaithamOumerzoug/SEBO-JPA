@@ -1,4 +1,4 @@
-<%@page import="sebo.haitham.metier.Client"%>
+<%@page import="sebo.haitham_said.metier.Client"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <% Map<String,String> erreurs =(HashMap<String,String>)request.getAttribute("erreurs"); 
