@@ -39,14 +39,14 @@
 						  <tbody>
 						  	<c:forEach items="${model.articles}" var="article">
 							    <tr>
-							      <th scope="row"><a href="${pageContext.request.contextPath}/detail.sebo?CodeArticle=${article.id }" class="text-decoration-none">${article.id }</a></th>
+							      <th scope="row"><a href="${pageContext.request.contextPath}/detail?CodeArticle=${article.id }" class="text-decoration-none">${article.id }</a></th>
 							      <td>${article.designation }</td>
 							      <td>${article.prix }</td>
-							      <td><img src="${pageContext.request.contextPath}/${article.photo }" alt="Erreur" height="50" width="50"></td>
+							      <td><img src="${pageContext.request.contextPath}${article.photo }" alt="Erreur" height="50" width="50"></td>
 							      <td>${article.stock }</td>
 							      <td>${article.id_cat }</td>
 							      <td>
-							      	<form action="ajouterPanier.sebo" method="post">
+							      	<form action="ajouterPanier" method="post">
 							      		<button class="btn btn-light">
 											<img alt="..." src="${pageContext.request.contextPath}/icons/panier.png" height="30" width="30">
 										</button>

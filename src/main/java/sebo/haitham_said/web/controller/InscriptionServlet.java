@@ -100,7 +100,7 @@ public class InscriptionServlet extends HttpServlet{
 					//Créer la session
 					HttpSession session = req.getSession();
 					session.setAttribute("client_name", nom+" "+prenom);
-					session.setAttribute("client_nameid", client.getId());
+					session.setAttribute("client_id", client.getId());
 					//Redirection vers la acceuil
 					res.sendRedirect(req.getContextPath()+"/accueil");
 				}	

@@ -1,8 +1,9 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="sebo.haitham_said.metier.Client"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <% Map<String,String> erreurs =(HashMap<String,String>)request.getAttribute("erreurs"); 
 %>
+<% Client client =(Client)request.getAttribute("client"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +19,10 @@
 			    Inscrivez vous	
 			  </div>
 			  <div class="card-body">
-			    <form action="inscrire.sebo" method="post">
+			    <form action="inscrire" method="post">
 				  <div class="form-group">
 				    <label for="nom">Nom</label>
-				    <input type="text" class="form-control" name="nom"  aria-describedby="nom" value="<">
+				    <input type="text" class="form-control" name="nom"  aria-describedby="nom" value="<%=client.getNom()==null?"":client.getNom() %>">
 				    <div class="text-danger"><i><%=erreurs.get("nom").equals("")?"":erreurs.get("nom") %></i></div>
 				  </div>
 				  <div class="form-group">

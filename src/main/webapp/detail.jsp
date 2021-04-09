@@ -41,8 +41,8 @@
 				   </div>
 			  </div>
 			  <div class="card-footer d-flex">
-			    <a href="catalogue.sebo" class="btn btn-danger mr-4">Retour</a>
-			    <form action="ajouterPanier.sebo?CodeArticle=${article.id }" method="post">
+			    <a href="catalogue" class="btn btn-danger mr-4">Retour</a>
+			    <form action="ajouterPanier?CodeArticle=${article.id }" method="post">
 					<button class="btn btn-light">
 						<img alt="..." src="${pageContext.request.contextPath}/icons/panier.png" height="30" width="30">
 					</button>

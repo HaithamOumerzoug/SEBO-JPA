@@ -20,7 +20,7 @@
 			    Identifier vous	
 			  </div>
 			  <div class="card-body">
-			    <form action="" method="post">
+			    <form action="identifier" method="post">
 				  <div class="form-group">
 				  	<label for="nom">E-mail</label>
 				    <input type="text" class="form-control" name="email" value="<%=email==null?"":email %>">

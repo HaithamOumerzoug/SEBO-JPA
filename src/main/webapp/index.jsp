@@ -15,8 +15,8 @@
 					<u>Bienvenue chez <i>SEBO</i> - Veuillez-vous identifier ou s'inscrire</u>
 				</span>
 			</h1>
-			<a class="btn btn-success" href="identifier.sebo">Déjà client : identifiez vous</a>
-			<a class="btn btn-primary" href="inscrire.sebo">Nouveau client : inscrivez vous</a>
+			<a class="btn btn-success" href="identifier">Déjà client : identifiez vous</a>
+			<a class="btn btn-primary" href="inscrire">Nouveau client : inscrivez vous</a>
 		</div>
 	</div>
 </body>

@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <form action="deconnection" method="post">
-      	<a class="nav-item nav-link">Déconnection</a>
+      	<input type="submit" class="btn nav-item nav-link" value="Déconnection"/>
       </form>
     </div>
   </div>
