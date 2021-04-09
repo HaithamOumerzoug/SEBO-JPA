@@ -44,8 +44,8 @@
 											<label for="quantite" class="font-weight-bold">Quantite</label>
 											 <input type="number" min="1" max="${article.stock }" value="1" class="form-control" name="quantite">
 									    </div>
-										<button type="submit" class="btn ml-4">
-											<img alt="..." src="${pageContext.request.contextPath}/icons/commander.png" height="30" width="30">
+										<button type="submit" class="btn ml-4 ">
+											<img alt="..." src="${pageContext.request.contextPath}/icons/commande.png" height="40" width="40">
 										</button> 
 									</div>
 								</form>
@@ -58,7 +58,7 @@
 				  </c:choose> 
 				  
 			  </div>
-			  <div class="card-footer d-flex">
+			  <div class="card-footer d-flex justify-con">
 			    <a href="accueil" class="btn btn-danger mr-4">Retour</a>
 			  </div>
 			</div>

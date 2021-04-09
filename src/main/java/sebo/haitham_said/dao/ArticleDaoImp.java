@@ -25,13 +25,15 @@ public class ArticleDaoImp implements IArticleDao{
 					article.setId(rs.getLong("CodeArticle"));
 					articles.add(article);
 				}
+				ps.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else {
+			PreparedStatement ps;
 			try {
-				PreparedStatement ps =con.prepareStatement("SELECT * FROM ARTICLES WHERE CATEGORIE=?");
+				ps =con.prepareStatement("SELECT * FROM ARTICLES WHERE CATEGORIE=?");
 				ps.setLong(1, id);
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
@@ -39,8 +41,8 @@ public class ArticleDaoImp implements IArticleDao{
 					article.setId(rs.getLong("CodeArticle"));
 					articles.add(article);
 				}
+				ps.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
