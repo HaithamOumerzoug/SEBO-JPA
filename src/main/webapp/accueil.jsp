@@ -17,7 +17,7 @@
 			  	</div>
 				<div class="card-body d-flex justify-content-between">
 					<a class="btn btn-success" href="catalogue"><fmt:message key="catalogue" /></a>
-					<a class="btn btn-primary" href="#"><fmt:message key="commande" /></a>
+					<a class="btn btn-primary" href="commande.jsp"><fmt:message key="commande" /></a>
 					<a class="btn btn-warning" href="panier"><fmt:message key="panier" /></a>
 				</div>
 			</div>
