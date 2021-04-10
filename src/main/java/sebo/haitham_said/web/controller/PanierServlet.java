@@ -36,12 +36,11 @@ public class PanierServlet extends HttpServlet {
 			Enumeration<String> keys=session.getAttributeNames();
 			while(keys.hasMoreElements()) {
 				String key = (String)keys.nextElement();
-				if(!key.equals("client_id") && !key.equals("client_name")) {
+				if(key.startsWith("article_")) {	
 					Article article =(Article) session.getAttribute(key);
 					articles.add(article);
 				}
 			}
-			
 			req.setAttribute("articles", articles);
 			req.getRequestDispatcher("panier.jsp").forward(req, res);}
 		}
