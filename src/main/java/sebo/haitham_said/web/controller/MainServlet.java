@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class MainServlet
- */
+
 @WebServlet("/MainServlet")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +21,8 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		
 		String path = req.getServletPath();
 		switch (path) {
 			case "/index": {
@@ -38,6 +38,7 @@ public class MainServlet extends HttpServlet {
 				}
 				break;
 			}
+			
 			case "/accueil": {
 				HttpSession session = req.getSession();
 				Enumeration clients = session.getAttributeNames();
@@ -57,6 +58,7 @@ public class MainServlet extends HttpServlet {
 				
 				break;
 			}
+			
 			default:
 				req.getRequestDispatcher("NotFound.jsp").forward(req, res);
 			}

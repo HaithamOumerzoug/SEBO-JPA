@@ -8,7 +8,7 @@ public class DbConnection {
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sebo?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/microproject?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

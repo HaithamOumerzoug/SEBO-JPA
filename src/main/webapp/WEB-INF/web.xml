@@ -43,7 +43,18 @@
   <servlet-mapping>
   	<servlet-name>Main</servlet-name>
   	<url-pattern>/deconnection</url-pattern>
+  </servlet-mapping> 
+  <!-- Accueil / Language -->
+  
+    <servlet>
+  	<servlet-name>Language</servlet-name>
+  	<servlet-class>sebo.haitham_said.web.controller.AccueilServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Language</servlet-name>
+  	<url-pattern>/language</url-pattern>
   </servlet-mapping>
+  
   <!-- Catalogue -->
   <servlet>
   	<servlet-name>Catalogue</servlet-name>

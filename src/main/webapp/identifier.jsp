@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setBundle basename="messages" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,7 @@
 		<div class="col-md-8 offset-2">
 			<div class="card my-5">
 			  <div class="card-header text-primary display-4 text-center">
-			    Identifier vous	
+			    <fmt:message key="identifier" />
 			  </div>
 			  <div class="card-body">
 			    <form action="identifier" method="post">
@@ -20,20 +22,21 @@
 				    <div class="text-danger"><i>${erreurs['email'] }</i></div>
 				  </div>
 				  <div class="form-group">
-				    <label for="motdepass">Mot de passe</label>
+				    <label for="motdepass"><fmt:message key="motDePasse" /></label>
 				    <input type="password" class="form-control" name="motdepasse">
 				    <div class="text-danger"><i>${erreurs['motdepasse'] }</i></div>
 				  </div>
 				  <div class="text-danger"><i>${erreurs['general'] }</i></div>
 				  
-				  <button type="submit" class="btn btn-info btn-block">Ok</button>
+				  <button type="submit" class="btn btn-info btn-block"><fmt:message key="ok" /></button>
 				</form>
 			  </div>
 			  <div class="card-footer">
-			  	<a class="btn btn-info float-right" href="inscrire">inscrivez vous</a>
+			  	<a class="btn btn-info float-right" href="inscrire"><fmt:message key="sinscrire" /></a>
 			  </div>
 			</div>
 		</div>
 	</div>
+	<%@include file="footer.jsp" %>
 </body>
 </html>

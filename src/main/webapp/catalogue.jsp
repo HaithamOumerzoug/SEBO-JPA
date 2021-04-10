@@ -1,9 +1,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setBundle basename="messages" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Catalogue</title>
+<title><fmt:message key="catal" /></title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -12,7 +14,7 @@
 		<div class="col-md-12">
 			<div class="card my-5">
 			  	<div class="card-header text-primary text-center" style="font-size:30px">
-			    	Catalogue
+			    	<fmt:message key="catal" />
 			  	</div>
 				<div class="card-body">
 					<form action="catalogue" method="post" class="mb-5 d-flex ">
@@ -22,18 +24,18 @@
 						  	<option value="${categorie.cat }">${categorie.cat }</option>
 						  </c:forEach>
 						</select>
-						<button type="submit" class="btn btn-primary btn-sm">Choisissez le genre</button> 
+						<button type="submit" class="btn btn-primary btn-sm"><fmt:message key="genre" /></button> 
 					</form> 
 					  <table class="table">
 						  <thead>
 						    <tr>
-						      <th scope="col">Réference</th>
+						      <th scope="col"><fmt:message key="reference" /></th>
 						      <th scope="col">Designation</th>
-						      <th scope="col">Prix</th>
-						      <th scope="col">Photo</th>
+						      <th scope="col"><fmt:message key="prix" /></th>
+						      <th scope="col"><fmt:message key="photo" /></th>
 						      <th scope="col">Stock</th>
-					      	  <th scope="col">Categorie</th>
-					      	  <th></th>
+					      	  <th scope="col"><fmt:message key="categorie" /></th>
+					      	  <th>&#x271A;</th>
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -41,7 +43,7 @@
 							    <tr>
 							      <th scope="row"><a href="${pageContext.request.contextPath}/detail?CodeArticle=${article.id }" class="text-decoration-none">${article.id }</a></th>
 							      <td>${article.designation }</td>
-							      <td>${article.prix }</td>
+							      <td><fmt:formatNumber value = "${article.prix}" type = "currency"/></td>
 							      <td><img src="${pageContext.request.contextPath}${article.photo }" alt="Erreur" height="50" width="50"></td>
 							      <td>${article.stock }</td>
 							      <td>${article.cat }</td>
@@ -60,5 +62,6 @@
 			</div>
 		</div>
 	</div>
+	<%@include file="footer.jsp" %>
 </body>
 </html>

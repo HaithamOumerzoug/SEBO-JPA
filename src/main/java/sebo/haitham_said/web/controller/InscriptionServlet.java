@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sebo.haitham_said.dao.ArticleDaoImp;
 import sebo.haitham_said.dao.ClientDaoImp;
-import sebo.haitham_said.dao.IArticleDao;
+
 import sebo.haitham_said.dao.IClientDao;
 import sebo.haitham_said.metier.Client;
 
 public class InscriptionServlet extends HttpServlet{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IClientDao metier; 
 	private Map<String,String> erreurs;
 	@Override

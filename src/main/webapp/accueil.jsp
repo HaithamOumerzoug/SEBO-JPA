@@ -1,8 +1,10 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setBundle basename="messages" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Accueil</title>
+<title><fmt:message key="accueil" /></title>
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -11,15 +13,16 @@
 		<div class="col-md-8 offset-2">
 			<div class="card my-5">
 			  	<div class="card-header text-primary text-center" style="font-size:30px">
-			    Bonjour ${client_name }
+			    <fmt:message key="bonjour" /> ${client_name }
 			  	</div>
 				<div class="card-body d-flex justify-content-between">
-					<a class="btn btn-success" href="catalogue">Consulter le catalogue</a>
-					<a class="btn btn-primary" href="#">Suivre vos commandes</a>
-					<a class="btn btn-warning" href="panier">Visualiser votre panier</a>
+					<a class="btn btn-success" href="catalogue"><fmt:message key="catalogue" /></a>
+					<a class="btn btn-primary" href="#"><fmt:message key="commande" /></a>
+					<a class="btn btn-warning" href="panier"><fmt:message key="panier" /></a>
 				</div>
 			</div>
 		</div>
 	</div>
+	<%@include file="footer.jsp" %>
 </body>
 </html>
