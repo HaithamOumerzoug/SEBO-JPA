@@ -16,7 +16,6 @@ public class AccueilServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String langue = req.getParameter("langue");
-		System.out.println(langue);
 		req.setAttribute("langue", langue);
 		req.getRequestDispatcher("index.jsp").forward(req, res);
 	}

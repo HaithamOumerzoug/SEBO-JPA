@@ -16,7 +16,7 @@
 				<fmt:message key="Service" />...
 			</h2>
 			<a href="accueil" class="btn btn-warning btn-block">
-				<fmt:message key="retour" />
+				<fmt:message key="retour"/>
 			</a>
 		</div>
 	</div>
