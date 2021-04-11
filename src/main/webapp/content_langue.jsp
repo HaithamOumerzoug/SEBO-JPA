@@ -6,7 +6,6 @@
 	 <div class="text-center">
 	      <form method="post" action="language" class="mt-3 d-flex ">
 			<select class="form-control col-md-2 mr-3" name="langue">
-				<option></option>
 				<option 
 					<c:choose><c:when test="${langue =='fr_FR' }">selected</c:when></c:choose> 
 					value="fr_FR">Français
