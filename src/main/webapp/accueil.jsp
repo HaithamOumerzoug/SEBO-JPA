@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <fmt:setBundle basename="messages" />
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,7 @@
 <body>
 	<%@include file="Header.jsp" %>
 	<div class="container">
+		<%-- <%@include file="SelectLangue.jsp" %> --%>
 		<div class="col-md-8 offset-2">
 			<div class="card my-5">
 			  	<div class="card-header text-primary text-center" style="font-size:30px">

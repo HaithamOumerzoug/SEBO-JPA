@@ -28,8 +28,10 @@
 							  	</div>
 							  <div class="form-group">
 							  	<label for="" class="font-weight-bold"><fmt:message key="prix" /></label>
-							    <div class="text-success"><fmt:formatNumber value = "${article.prix}" type = "currency"/></div>
-							  </div>
+							    <div class="text-success">
+								    <fmt:formatNumber value = "${article.prix}" type ="currency" />
+							  	</div>
+							 </div>
 							  <div class="form-group">
 									<label for="" class="font-weight-bold">Stock</label>
 									<div class="text-danger">${article.stock }</div>

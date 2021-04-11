@@ -19,9 +19,9 @@
 				<div class="card-body">
 					<form action="catalogue" method="post" class="mb-5 d-flex ">
 						<select class="form-control col-md-4 mr-3" name="categorie">
-						  <option selected value="all"></option>
+						  <option <c:choose><c:when test="${old_cat == 'all' }">selected</c:when></c:choose> value="all"></option>
 						  <c:forEach items="${cat_model.categories}" var="categorie">
-						  	<option value="${categorie.cat }">${categorie.cat }</option>
+						  	<option <c:choose><c:when test="${old_cat == categorie.cat }">selected</c:when></c:choose> value="${categorie.cat }">${categorie.cat }</option>
 						  </c:forEach>
 						</select>
 						<button type="submit" class="btn btn-primary btn-sm"><fmt:message key="genre" /></button> 

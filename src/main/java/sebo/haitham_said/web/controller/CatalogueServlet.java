@@ -87,6 +87,7 @@ public class CatalogueServlet extends HttpServlet {
 		}
 		cat_model.setCategories(article_metier.getCategories());
 		
+		req.setAttribute("old_cat", cat_name);
 		req.setAttribute("model", model);
 		req.setAttribute("cat_model", cat_model);
 		req.getRequestDispatcher("catalogue.jsp").forward(req, res);

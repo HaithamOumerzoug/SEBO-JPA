@@ -15,15 +15,14 @@ public class AccueilServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		String langue = req.getParameter("langue");
-		req.setAttribute("langue", langue);
-		req.getRequestDispatcher("index.jsp").forward(req, res);
+		
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String langue = req.getParameter("langue");
+		req.setAttribute("langue", langue);
+		req.getRequestDispatcher("index.jsp").forward(req, res);
 	}
 
 }
