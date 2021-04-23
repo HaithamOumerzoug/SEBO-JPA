@@ -1,7 +1,7 @@
 package sebo.haitham_said.dao;
 
 
-import java.sql.Connection;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,17 +62,6 @@ public class ArticleDaoImp implements IArticleDao{
 		Query query = em.createQuery("SELECT c.cat FROM Categorie c LEFT JOIN c.articles a where a.id = :codeA");
 		query.setParameter("codeA", id);
 		cat_name = (String) query.getSingleResult(); 
-//		try {
-//			String query = "SELECT categories.Cat FROM categories INNER JOIN articles on articles.Categorie=categories.RefCat WHERE articles.Categorie = ?";
-//			PreparedStatement pstm = con.prepareStatement(query);
-//			pstm.setLong(1, id);
-//			ResultSet res = pstm.executeQuery();
-//			while(res.next()) {
-//				cat_name= res.getString("Cat");
-//			}
-//		}catch (SQLException e) {
-//			e.printStackTrace();
-//		}
 		return cat_name;
 	}
 }
