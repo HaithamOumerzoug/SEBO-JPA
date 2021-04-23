@@ -1,6 +1,14 @@
 package sebo.haitham_said.metier;
 
+import javax.persistence.Entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "clients")
 public class Client {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nom;
 	private String prenom;
@@ -76,6 +84,12 @@ public class Client {
 	}
 	public void setMotdepasse(String motdepasse) {
 		this.motdepasse = motdepasse;
+	}
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", adresse=" + adresse
+				+ ", codepostal=" + codepostal + ", ville=" + ville + ", tel=" + tel + ", motdepasse=" + motdepasse
+				+ "]";
 	}
 	
 	

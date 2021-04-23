@@ -1,22 +1,35 @@
 package sebo.haitham_said.metier;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "articles")
 public class Article {
+private static final long serialVersionUID = 1L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "CodeArticle")
 	private Long id;
+	@Column(name = "Designation")
 	private String designation;
+	@Column(name = "Prix")
 	private double prix;
+	@Column(name = "Stock")
 	private int stock;
-	private Long id_cat;
+	@ManyToOne
+	private Categorie category;
+	@Column(name = "Photo")
 	private String photo;
-	private String cat;
 	public Article() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Article(String designation, double prix, int stock, Long id_cat, String photo) {
+	public Article(String designation, double prix, int stock, Long id_cat, String photo, Categorie cat) {
 		this.designation = designation;
 		this.prix = prix;
+		this.category = cat;
 		this.stock = stock;
-		this.id_cat = id_cat;
 		this.photo = photo;
 	}
 	public Long getId() {
@@ -43,11 +56,12 @@ public class Article {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	public Long getId_cat() {
-		return id_cat;
+	
+	public Categorie getCategory() {
+		return category;
 	}
-	public void setId_cat(Long id_cat) {
-		this.id_cat = id_cat;
+	public void setCategory(Categorie category) {
+		this.category = category;
 	}
 	public String getPhoto() {
 		return photo;
@@ -55,12 +69,13 @@ public class Article {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public String getCat() {
-		return cat;
+	
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", designation=" + designation + ", prix=" + prix + ", stock=" + stock
+				+ ", category=" + category + ", photo=" + photo + "]";
 	}
-	public void setCat(String cat) {
-		this.cat = cat;
-	}
+	
 	
 	
 }

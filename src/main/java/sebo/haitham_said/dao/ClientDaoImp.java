@@ -7,34 +7,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import sebo.haitham_said.metier.Client;
 
 public class ClientDaoImp implements IClientDao{
 	private Connection con = DbConnection.getConnection();
+	EntityManager em = sebo.haitham_said.util.HibernateUtil.getEntityManager();
 	
 	@Override
 	public Client addClient(Client client) {
+		
 		try {
-			PreparedStatement ps = con.prepareStatement
-					("INSERT INTO CLIENTS(NOM,PRENOM,EMAIL,ADRESSE,CODEPOSTAL,VILLE,TEL,MOTPASSE) VALUES (?,?,?,?,?,?,?,?)");
-			ps.setString(1, client.getNom());
-			ps.setString(2,client.getPrenom() );
-			ps.setString(3,client.getEmail());
-			ps.setString(4,client.getAdresse());
-			ps.setInt(5,client.getCodepostal());
-			ps.setString(6,client.getVille());
-			ps.setString(7,client.getTel());
-			ps.setString(8,client.getMotdepasse());
-			ps.executeUpdate();
-			PreparedStatement ps2 = con.prepareStatement("SELECT MAX(ID) AS ID FROM CLIENTS");
-			ResultSet rs=ps2.executeQuery();
-			if(rs.next()){
-				client.setId(rs.getLong("ID"));
-			}
-			ps.close();
+			em.getTransaction().begin();
+			em.persist(client);
+			em.getTransaction().commit();
+			
+			
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+			em.getTransaction().rollback();
 		}
 		
 		return client;
@@ -43,12 +37,11 @@ public class ClientDaoImp implements IClientDao{
 	@Override
 	public boolean emailUnique(String email) {
 		try {
-			PreparedStatement ps = con.prepareStatement
-					("SELECT * FROM CLIENTS WHERE EMAIL LIKE ?");
-			ps.setString(1, email);
-			ResultSet rs=ps.executeQuery();
-			if(rs.next()) return true;
-		} catch (SQLException e) {
+			Query q = em.createQuery("select c.email from Client c where c.email like :email");
+			q.setParameter("email", email);
+			String e =(String) q.getSingleResult();
+			if(e!=null)return true;
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -65,7 +58,7 @@ public class ClientDaoImp implements IClientDao{
 	public Client identifier(String email, String motdepasse) {
 		Client client=null;
 		try {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM CLIENTS WHERE EMAIL = ? AND MOTPASSE = ?");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM clients WHERE EMAIL = ? AND MOTPASSE = ?");
 			ps.setString(1, email);
 			ps.setString(2, motdepasse);
 			ResultSet rs =ps.executeQuery();
@@ -89,7 +82,7 @@ public class ClientDaoImp implements IClientDao{
 	public List<Client> getClients() {
 		List<Client> clients = new ArrayList<Client>();
 		try {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM CLIENTS");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM clients");
 			ResultSet rs= ps.executeQuery();
 			while(rs.next()) {
 				Client client = new Client();

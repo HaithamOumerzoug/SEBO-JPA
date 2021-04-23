@@ -1,8 +1,22 @@
 package sebo.haitham_said.metier;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "categories")
 public class Categorie {
+private static final long serialVersionUID = 1L;
+	@Column(name = "RefCat")
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long refcat;
+	@Column(name = "Cat")
 	private String cat;
+	@OneToMany(targetEntity = Article.class, mappedBy = "category")
+	private List<Article> articles = new ArrayList<>();
 	
 	public Categorie() {
 		super();
@@ -22,6 +36,10 @@ public class Categorie {
 	}
 	public void setCat(String Cat) {
 		this.cat = Cat;
+	}
+	@Override
+	public String toString() {
+		return "Categorie [refcat=" + refcat + ", cat=" + cat + "]";
 	}
 	
 	

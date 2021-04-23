@@ -1,50 +1,31 @@
 package sebo.haitham_said.dao;
 
+
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import sebo.haitham_said.metier.Article;
 import sebo.haitham_said.metier.Categorie;
 
 public class ArticleDaoImp implements IArticleDao{
-	private Connection con = DbConnection.getConnection();
 	
+	EntityManager em = sebo.haitham_said.util.HibernateUtil.getEntityManager();
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Article> getArticles(Long id) {
 		List<Article> articles = new ArrayList<Article>();
 		if(id==null) {
-			try {
-				PreparedStatement ps =con.prepareStatement("SELECT * FROM ARTICLES");
-				ResultSet rs = ps.executeQuery();
-				while(rs.next()) {
-					Article article= new Article(rs.getString("DESIGNATION"),rs.getDouble("PRIX"),rs.getInt("STOCK"),rs.getLong("CATEGORIE"),rs.getString("PHOTO"));
-					article.setId(rs.getLong("CodeArticle"));
-					articles.add(article);
-				}
-				ps.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				articles = em.createQuery("from Article", Article.class).getResultList();		
 		}else {
-			PreparedStatement ps;
-			try {
-				ps =con.prepareStatement("SELECT * FROM ARTICLES WHERE CATEGORIE=?");
-				ps.setLong(1, id);
-				ResultSet rs = ps.executeQuery();
-				while(rs.next()) {
-					Article article= new Article(rs.getString("DESIGNATION"),rs.getDouble("PRIX"),rs.getInt("STOCK"),rs.getLong("CATEGORIE"),rs.getString("PHOTO"));
-					article.setId(rs.getLong("CodeArticle"));
-					articles.add(article);
-				}
-				ps.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			Query query = em.createQuery("SELECT a FROM Article a where a.id = :codeArticle");
+	          query.setParameter("codeArticle", id);
+	          articles = query.getResultList();
+
 		}
 		
 		return articles;
@@ -53,75 +34,45 @@ public class ArticleDaoImp implements IArticleDao{
 	@Override
 	public List<Categorie> getCategories() {
 		List<Categorie> categories = new ArrayList<Categorie>();
-		try {
-			PreparedStatement ps =con.prepareStatement("SELECT * FROM CATEGORIES");
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				Categorie categorie = new Categorie(rs.getString("CAT"));
-				categorie.setRefCat(rs.getLong("RefCat"));
-				categories.add(categorie);
-			}
-			ps.close();
-		}catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		categories = em.createQuery("from Categorie", Categorie.class).getResultList();
 		return categories;
 	}
 
 	@Override
 	public Long getCatId(String cat) {
 		Long cat_id=null;
-		try {
-			PreparedStatement ps = con.prepareStatement("SELECT RefCat FROM Categories WHERE Cat=?");
-			ps.setString(1, cat);
-			ResultSet rs=ps.executeQuery();
-			if(rs.next())cat_id=rs.getLong("RefCat");
-			ps.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		Query query = em.createQuery("SELECT c.refcat FROM Categorie c where c.cat  = :category");
+		query.setParameter("category", cat);
+		cat_id = (long) query.getSingleResult();
 		return cat_id;
 	}
 
 	@Override
 	public Article getArticle(Long CodeArticle) {
 		Article article =new Article();
-		try {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM ARTICLES WHERE CodeArticle=?");
-			ps.setLong(1, CodeArticle);
-			ResultSet rs=ps.executeQuery();
-			if(rs.next()) {
-				article.setId(rs.getLong("CodeArticle"));
-				article.setDesignation(rs.getString("DESIGNATION"));
-				article.setPrix(rs.getDouble("PRIX"));
-				article.setStock(rs.getInt("STOCK"));
-				article.setId_cat(rs.getLong("CATEGORIE"));
-				article.setPhoto(rs.getString("PHOTO"));
-			}
-			ps.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		Query query = em.createQuery("SELECT a FROM Article a where a.id = :codeArticle");
+		query.setParameter("codeArticle", CodeArticle);
+		article = (Article) query.getSingleResult();
 		return article;
 	}
 
 	@Override
 	public String getCat(Long id) {
 		String cat_name="";
-		try {
-			String query = "SELECT categories.Cat FROM categories INNER JOIN articles on articles.Categorie=categories.RefCat WHERE articles.Categorie = ?";
-			PreparedStatement pstm = con.prepareStatement(query);
-			pstm.setLong(1, id);
-			ResultSet res = pstm.executeQuery();
-			while(res.next()) {
-				cat_name= res.getString("Cat");
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
+		Query query = em.createQuery("SELECT c.cat FROM Categorie c LEFT JOIN c.articles a where a.id = :codeA");
+		query.setParameter("codeA", id);
+		cat_name = (String) query.getSingleResult(); 
+//		try {
+//			String query = "SELECT categories.Cat FROM categories INNER JOIN articles on articles.Categorie=categories.RefCat WHERE articles.Categorie = ?";
+//			PreparedStatement pstm = con.prepareStatement(query);
+//			pstm.setLong(1, id);
+//			ResultSet res = pstm.executeQuery();
+//			while(res.next()) {
+//				cat_name= res.getString("Cat");
+//			}
+//		}catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		return cat_name;
 	}
 }
