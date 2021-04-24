@@ -8,7 +8,7 @@
 <title><fmt:message key="catal" /></title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('images/background.jpg')">
 	<%@include file="Header.jsp" %>
 	<div class="container">
 		<div class="col-md-12">

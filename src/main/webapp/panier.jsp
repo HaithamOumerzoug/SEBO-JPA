@@ -11,7 +11,7 @@
 <title><fmt:message key="panier" /></title>
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('images/background.jpg')">
 	<div class="container">
 		<div class="col-md-8 offset-2">
 			<div class="card my-5">
