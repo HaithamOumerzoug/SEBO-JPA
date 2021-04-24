@@ -1,7 +1,7 @@
 package sebo.haitham_said.web.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,9 +40,11 @@ public class CatalogueServlet extends HttpServlet {
 				ArticleModel model=new ArticleModel();
 				CategorieModel cat_model = new CategorieModel();
 				model.setArticles(article_metier.getArticles(null));
-				for (Article article : model.getArticles()) {
-					article.setCat(article_metier.getCat(article.getId()));
-				}
+//				for (Article article : model.getArticles()) {
+//					article.setCategory(article.getCategory());
+//					//article.setCategory(article_metier.getCategory(article.getId()));
+//					//article.setCat(article_metier.getCat(article.getId()));
+//				}
 				cat_model.setCategories(article_metier.getCategories());
 				req.setAttribute("model", model);
 				req.setAttribute("cat_model", cat_model);
@@ -55,7 +57,8 @@ public class CatalogueServlet extends HttpServlet {
 			else {
 				Long CodeArticle = Long.parseLong(req.getParameter("CodeArticle"));
 				Article article =article_metier.getArticle(CodeArticle);
-				article.setCat(article_metier.getCat(article.getId_cat()));
+				//article.setCategory(article_metier.getCategory(article.getCategory().getRefCat()));
+				//article.setCat(article_metier.getCat(article.getId_cat()));
 				req.setAttribute("article", article);
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
 			}
@@ -82,9 +85,10 @@ public class CatalogueServlet extends HttpServlet {
 			Long cat_id=article_metier.getCatId(cat_name);
 			model.setArticles(article_metier.getArticles(cat_id));
 		}
-		for (Article article : model.getArticles()) {
-			article.setCat(article_metier.getCat(article.getId()));
-		}
+//		for (Article article : model.getArticles()) {
+//			article.setCategory(article_metier.getCategory(article.getId()));
+//			//article.setCat(article_metier.getCat(article.getId()));
+//		}
 		cat_model.setCategories(article_metier.getCategories());
 		
 		req.setAttribute("old_cat", cat_name);

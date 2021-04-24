@@ -64,4 +64,17 @@ public class ArticleDaoImp implements IArticleDao{
 		cat_name = (String) query.getSingleResult(); 
 		return cat_name;
 	}
+	
+	@Override
+	public Categorie getCategory(Long id) {
+		Categorie cat = new Categorie();
+		try {
+			Query query = em.createQuery("SELECT a.category FROM Article a WHERE a.id = :artId");
+			query.setParameter("artId", id);
+			cat = (Categorie) query.getSingleResult();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cat;
+	}
 }

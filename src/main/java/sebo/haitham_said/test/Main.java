@@ -34,9 +34,9 @@ public class Main {
 //		   }
 		 
 		 
-//		ArticleDaoImp Adao = new ArticleDaoImp();
-//		List<Article> articles = Adao.getArticles(null);
-//		articles.forEach(System.out::println);
+		ArticleDaoImp Adao = new ArticleDaoImp();
+		 System.out.println(Adao.getCategory(1L));
+		//articles.forEach(System.out::println);
 		
 		 
 		
@@ -50,12 +50,12 @@ public class Main {
 //		  client.setVille("Agadir"); 
 //		  client.setMotdepasse("Said");
 //		 
-         ClientDaoImp Adao = new ClientDaoImp(); 
+         //ClientDaoImp Adao = new ClientDaoImp(); 
 //          System.out.println(Adao.addClient(client));
           //System.out.println(Adao.emailUnique("haithaam@gmail.com"));
          //System.out.println(Adao.identifier("said@gmail.com", "Said"));
-         List<sebo.haitham_said.metier.Client> clients = Adao.getClients();
-         clients.forEach(System.out::println);
+        // List<sebo.haitham_said.metier.Client> clients = Adao.getClients();
+         //clients.forEach(System.out::println);
 		
 }
 }

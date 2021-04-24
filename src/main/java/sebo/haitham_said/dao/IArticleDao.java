@@ -11,4 +11,5 @@ public interface IArticleDao {
 	public List<Categorie> getCategories();
 	public Long getCatId(String cat);
 	public String getCat(Long id);
+	public Categorie getCategory(Long id);
 }

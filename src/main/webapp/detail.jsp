@@ -30,7 +30,7 @@
 				  <div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="" class="font-weight-bold"><fmt:message key="categorie" /></label>
-						<div class="text-danger">${article.cat }</div>
+						<div class="text-danger">${article.category.cat }</div>
 				    </div>
 				    <div class="form-group col-md-6">
 						<label for="" class="font-weight-bold">Stock</label>
