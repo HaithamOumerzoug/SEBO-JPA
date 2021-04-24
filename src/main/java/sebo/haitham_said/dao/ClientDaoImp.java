@@ -30,15 +30,10 @@ public class ClientDaoImp implements IClientDao{
 
 	@Override
 	public boolean emailUnique(String email) {
-		try {
-			Query q = em.createQuery("select c.email from Client c where c.email like :email");
-			q.setParameter("email", email);
-			String e =(String) q.getSingleResult();
-			if(e!=null)return true;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Query q = em.createQuery("select c.email from Client c where c.email like :email");
+		q.setParameter("email", email);
+		String e =(String) q.getSingleResult();
+		if(e!=null)return true;
 		return false;
 	}
 

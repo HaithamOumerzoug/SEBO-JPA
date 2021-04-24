@@ -11,7 +11,7 @@
 <title>SEBO</title>
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('images/index_background.jpg')">
 	<%@include file="content_langue.jsp" %>
 	<%@include file="footer.jsp" %>
 </body>

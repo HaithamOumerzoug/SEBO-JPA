@@ -8,7 +8,7 @@
 <title><fmt:message key="accueil" /></title>
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('images/background.jpg')">
 	<%@include file="Header.jsp" %>
 	<div class="container">
 		<%-- <%@include file="SelectLangue.jsp" %> --%>
