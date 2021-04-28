@@ -12,8 +12,8 @@
 	<%@include file="Header.jsp" %>
 	<div class="container">
 		<%-- <%@include file="SelectLangue.jsp" %> --%>
-		<div class="col-md-8 offset-2">
-			<div class="card my-5">
+		<div class="col-md-8 offset-2 ">
+			<div class="card my-5 shadow-lg p-3 mb-5 bg-white rounded" >
 			  	<div class="card-header text-primary text-center" style="font-size:30px">
 			    <fmt:message key="bonjour" /> ${client_name }
 			  	</div>

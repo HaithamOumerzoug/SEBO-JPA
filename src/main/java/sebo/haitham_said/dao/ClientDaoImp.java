@@ -53,6 +53,7 @@ public class ClientDaoImp implements IClientDao{
 			client = (Client) query.getSingleResult();
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Mehdi");
 		}
 		return client;
 	}
